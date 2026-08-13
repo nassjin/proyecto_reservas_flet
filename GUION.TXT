@@ -1,0 +1,81 @@
+Buenos días. Mi nombre es __________ y soy estudiante de cuarto medio de la especialidad de Programación.
+
+Hoy les presentaré un proyecto desarrollado para el módulo de Administración de Bases de Datos. El proyecto consiste en un sistema para reservar 
+computadores del laboratorio.
+
+[Mostrar la pantalla principal]
+
+El problema que buscamos resolver es el siguiente: si las reservas se anotan manualmente, dos alumnos podrían solicitar el mismo computador para 
+la misma fecha y bloque. Nuestro sistema permite registrar y administrar las reservas, y evita que se produzca ese conflicto.
+
+Para desarrollar el proyecto utilizamos tres herramientas principales.
+Primero, usamos MySQL como motor de base de datos, porque es el encargado de almacenar y administrar la información.
+Segundo, utilizamos DBeaver para crear las tablas, ejecutar instrucciones SQL y revisar los datos almacenados.
+Finalmente, usamos Flet con Python para construir la interfaz gráfica que estamos viendo.
+
+[Mostrar brevemente las tablas en DBeaver]
+
+La base de datos contiene cuatro tablas principales.
+La tabla alumnos almacena el nombre y el curso de cada estudiante.
+La tabla computadores guarda el código, la ubicación y el estado de cada equipo.
+La tabla bloques contiene los horarios disponibles.
+Por último, la tabla reservas relaciona un alumno con un computador, una fecha y un bloque.
+Estas relaciones se realizan mediante claves primarias y claves foráneas. Las claves foráneas permiten evitar, por ejemplo, que se registre 
+una reserva para un alumno o computador que no existe.
+
+La aplicación implementa un CRUD. Esta palabra representa las cuatro operaciones principales que podemos realizar sobre los datos: 
+crear, leer, actualizar y eliminar.
+Primero mostraré la operación de crear.
+
+[Seleccionar un alumno, computador, bloque y fecha]
+
+Seleccionamos los datos y presionamos el botón “Agregar reserva”.
+
+[Agregar la reserva]
+
+La aplicación envía los datos a MySQL y la reserva queda registrada.
+
+La segunda operación es leer. En la parte inferior podemos observar las reservas activas. 
+Para mostrar esta información se utiliza una consulta SELECT que une las tablas y presenta los nombres en lugar de mostrar solamente sus 
+identificadores.
+La tercera operación es actualizar.
+[Presionar el botón del lápiz]
+
+Al presionar el botón de edición, los datos de la reserva aparecen nuevamente en el formulario. Podemos cambiar, por ejemplo, el alumno, 
+el computador, el bloque o la fecha.
+
+[Modificar un dato y guardar]
+
+Después presionamos “Guardar cambios” y Python ejecuta una instrucción UPDATE. La lista se actualiza inmediatamente.
+
+La cuarta operación es eliminar.
+
+[Presionar el botón de eliminación en una reserva de prueba]
+
+Al presionar el botón rojo, Python ejecuta una instrucción DELETE y la reserva desaparece de la base de datos.
+
+El proyecto utiliza un solo procedimiento almacenado, llamado `realizar_reserva`. Este procedimiento se utiliza únicamente al agregar.
+
+Antes de insertar una reserva, el procedimiento cuenta cuántas reservas activas existen para el mismo computador, fecha y bloque.
+
+Si el resultado es cero, significa que el computador está disponible y se registra la reserva. Si el resultado es mayor que cero, 
+MySQL rechaza la operación y muestra un mensaje.
+
+[Crear una reserva y luego intentar repetir el mismo computador, fecha y bloque]
+
+Ahora intentaré reservar nuevamente el mismo computador.
+
+[Mostrar el mensaje de error]
+
+Como podemos observar, la base de datos indica que el computador ya está reservado en ese bloque.
+
+Esta validación se realiza en MySQL y no solamente en la interfaz. Esto ayuda a proteger la información aunque los datos sean ingresados 
+desde otra aplicación.
+
+En conclusión, este proyecto permite aplicar contenidos de Administración de Bases de Datos, como tablas relacionadas, claves primarias y foráneas, 
+consultas SELECT, INSERT, UPDATE y DELETE, conexión entre Python y MySQL, y el uso de un procedimiento almacenado.
+
+Con este sistema demostramos que una base de datos no solamente sirve para guardar información. También permite mantener los datos organizados, 
+actualizados y protegidos mediante reglas.
+
+Muchas gracias por su atención. ¿Tienen alguna pregunta?

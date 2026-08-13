@@ -1,0 +1,21 @@
+# Contraseña y configuración local
+.env
+
+# Entorno virtual de Python
+.venv/
+venv/
+
+# Archivos generados por Python
+__pycache__/
+*.py[cod]
+
+# Configuración de editores
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Registros
+*.log
