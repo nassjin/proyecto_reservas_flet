@@ -51,22 +51,77 @@ CREATE TABLE reservas (
         FOREIGN KEY (bloque_id) REFERENCES bloques(id)
 );
 
--- Datos pequeños para que la demostración esté lista inmediatamente.
+-- =====================================================
+-- DATOS DE PRUEBA: ALUMNOS
+-- =====================================================
+
 INSERT INTO alumnos (nombre, curso) VALUES
 ('Camila Soto', '2°A'),
 ('Diego Muñoz', '2°A'),
-('Valentina Rojas', '2°B');
+('Valentina Rojas', '2°B'),
+('Martín González', '2°B'),
+('Antonia Pérez', '2°C'),
+('Benjamín Torres', '2°C'),
+('Sofía Ramírez', '3°A'),
+('Vicente Herrera', '3°A'),
+('Isidora Morales', '3°B'),
+('Tomás Castro', '3°B'),
+('Emilia Fuentes', '4°A'),
+('Joaquín Silva', '4°A'),
+('Fernanda Contreras', '4°B'),
+('Matías Sepúlveda', '4°B'),
+('Catalina Araya', '4°C');
+
+-- =====================================================
+-- DATOS DE PRUEBA: COMPUTADORES
+-- =====================================================
 
 INSERT INTO computadores (codigo, ubicacion, estado) VALUES
 ('PC-01', 'Laboratorio 1', 'DISPONIBLE'),
 ('PC-02', 'Laboratorio 1', 'DISPONIBLE'),
 ('PC-03', 'Laboratorio 1', 'DISPONIBLE'),
-('PC-04', 'Laboratorio 1', 'MANTENCION');
+('PC-04', 'Laboratorio 1', 'MANTENCION'),
+('PC-05', 'Laboratorio 1', 'DISPONIBLE'),
+('PC-06', 'Laboratorio 1', 'DISPONIBLE'),
+('PC-07', 'Laboratorio 1', 'DISPONIBLE'),
+('PC-08', 'Laboratorio 1', 'MANTENCION'),
+('PC-09', 'Laboratorio 2', 'DISPONIBLE'),
+('PC-10', 'Laboratorio 2', 'DISPONIBLE'),
+('PC-11', 'Laboratorio 2', 'DISPONIBLE'),
+('PC-12', 'Laboratorio 2', 'DISPONIBLE'),
+('PC-13', 'Laboratorio 2', 'MANTENCION'),
+('PC-14', 'Laboratorio 2', 'DISPONIBLE'),
+('PC-15', 'Laboratorio 2', 'DISPONIBLE');
+
+-- =====================================================
+-- DATOS DE PRUEBA: BLOQUES
+-- =====================================================
 
 INSERT INTO bloques (nombre, hora_inicio, hora_fin) VALUES
 ('Bloque 1', '08:00:00', '09:30:00'),
 ('Bloque 2', '09:45:00', '11:15:00'),
-('Bloque 3', '11:30:00', '13:00:00');
+('Bloque 3', '11:30:00', '13:00:00'),
+('Bloque 4', '14:00:00', '15:30:00'),
+('Bloque 5', '15:45:00', '17:15:00');
+
+-- =====================================================
+-- RESERVAS DE PRUEBA
+-- =====================================================
+
+INSERT INTO reservas (
+    alumno_id,
+    computador_id,
+    bloque_id,
+    fecha,
+    estado
+)
+VALUES
+(1, 1, 1, '2026-08-13', 'ACTIVA'),
+(2, 2, 1, '2026-08-13', 'ACTIVA'),
+(3, 3, 2, '2026-08-13', 'ACTIVA'),
+(4, 5, 3, '2026-08-14', 'ACTIVA'),
+(5, 6, 4, '2026-08-14', 'ACTIVA'),
+(6, 7, 5, '2026-08-15', 'CANCELADA');
 
 DROP PROCEDURE IF EXISTS realizar_reserva;
 
